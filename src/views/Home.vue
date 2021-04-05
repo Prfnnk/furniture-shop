@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="top-block">
+      <Header />
+      <SwiperBlock />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '@/components/Header.vue'
+import SwiperBlock from '@/components/SwiperBlock.vue'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    HelloWorld,
-  },
-};
+    Header,
+    SwiperBlock
+  }
+}
 </script>
+
+<style scoped>
+.top-block {
+  width: 100%;
+  height: 774px;
+  background-image: linear-gradient(to right, #f9f1e7 70%, #fcf8f3 70%);
+}
+</style>
