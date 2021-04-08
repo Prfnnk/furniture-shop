@@ -5,6 +5,7 @@
     </div>
     <HeaderMenu />
     <SearchBar />
+    <HeaderRight />
   </header>
 </template>
 
@@ -13,11 +14,13 @@ export default {
   name: 'Header',
   components: {
     HeaderMenu,
-    SearchBar
+    SearchBar,
+    HeaderRight
   }
 }
 import HeaderMenu from './HeaderMenu.vue'
 import SearchBar from './SearchBar.vue'
+import HeaderRight from './HeaderRight.vue'
 </script>
 
 <style>

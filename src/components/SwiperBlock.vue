@@ -1,19 +1,26 @@
 <template>
-  <div class="wrappper">
+  <div class="wrapper">
     <swiper ref="mySwiper" :options="swiperOptions">
-      <swiper-slide
-        ><img src="../assets/images/swiper-pic-1.png" alt=""
-      /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/images/swiper-pic-2.png" alt=""
-      /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/images/swiper-pic-3.png" alt=""
-      /></swiper-slide>
+      <swiper-slide v-for="slide in slides" :key="slide.title"
+        ><img :src="slide.src" :alt="slide.title" />
+        <div class="slide__text">
+          <div class="slide__title">{{ slide.title }}</div>
+          <div class="slide__description">{{ slide.description }}</div>
+          <div class="slide__price">{{ slide.price }}</div>
+        </div>
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>
     </swiper>
+    <div class="best-offer">
+      <div class="best-offer__title">High-Quality Furniture Just For You</div>
+      <div class="best-offer__description">
+        Our furniture is made from selected and best quality materials that are
+        suitable for your dream home
+      </div>
+      <button class="best-offer__button">Shop Now</button>
+    </div>
   </div>
 </template>
 
@@ -28,6 +35,26 @@ export default {
   name: 'carousel',
   data() {
     return {
+      slides: [
+        {
+          src: require('../assets/images/swiper-pic-1.png'),
+          title: 'Bohauss',
+          description: 'Luxury big sofa 2-seat',
+          price: 'Rp 17.000.000'
+        },
+        {
+          src: require('../assets/images/swiper-pic-2.png'),
+          title: 'Kekhauss',
+          description: 'Luxury king-size bed',
+          price: 'Rp 15.000.000'
+        },
+        {
+          src: require('../assets/images/swiper-pic-3.png'),
+          title: 'Pekhauss',
+          description: 'Luxury big sofa for chilling nights',
+          price: 'Rp 25.000.000'
+        }
+      ],
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination',
@@ -70,6 +97,7 @@ export default {
 .wrapper {
   width: 100%;
   height: 623px;
+  position: relative;
 }
 .swiper-container {
   padding-top: 70px;
@@ -77,6 +105,51 @@ export default {
 .swiper-slide {
   width: 934px;
   height: 553px;
+}
+.slide {
+  &__text {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 294px;
+    height: 148px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(31px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 24px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 24px;
+      height: 24px;
+      background-image: url('../assets/images/arrow-right.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #616161;
+  }
+  &__price {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+  }
 }
 // pagination bullets
 .swiper-container-horizontal > .swiper-pagination-bullets {
@@ -133,6 +206,10 @@ export default {
   &:after {
     font-size: 14px;
   }
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
 }
 .swiper-button-next {
   right: 100px;
@@ -142,5 +219,51 @@ export default {
   color: #e89f71;
   right: 156px;
   left: initial;
+}
+//rest
+.best-offer {
+  position: absolute;
+  top: -20px;
+  left: 100px;
+  width: 494px;
+  height: 553px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(31px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #898989;
+    text-align: left;
+  }
+  &__button {
+    width: 374px;
+    height: 78px;
+    background: #e89f71;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    outline: none;
+
+    &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+  }
 }
 </style>

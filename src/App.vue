@@ -23,4 +23,9 @@
 body {
   margin: 0;
 }
+
+img {
+  width: 100%;
+  display: block;
+}
 </style>
